@@ -4,7 +4,7 @@ FROM node:20-bookworm-slim as builder
 WORKDIR /workspace
 RUN apt-get update -q && \
     apt-get install -qy build-essential git python3
-ADD package*.json /workspace
+ADD package*.json /workspace/
 RUN npm install && \
     apt-get remove -qy build-essential git python3 &&\
     rm -rf /var/lib/apt/lists/* && \

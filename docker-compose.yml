@@ -1,0 +1,11 @@
+# Start the service with the command 'docker-compose up -d'
+
+version: '3.9'
+
+services:
+  block-explorer:
+    build: .
+    container_name: block-explorer
+    ports:
+      - 3002:3002
+    restart: always
