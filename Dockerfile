@@ -5,6 +5,7 @@ WORKDIR /workspace
 RUN apt-get update -q && \
     apt-get install -qy build-essential git python3
 ADD package*.json /workspace/
+
 RUN npm install && \
     apt-get remove -qy build-essential git python3 &&\
     rm -rf /var/lib/apt/lists/* && \
@@ -25,5 +26,8 @@ CMD node-gyp rebuild
 ENV NODE_OPTIONS=--max_old_space_size=4096
 ENV LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so.2
 ADD . /workspace
+
+ADD .env /workspace/.env
+
 CMD npm start
 EXPOSE 3002
